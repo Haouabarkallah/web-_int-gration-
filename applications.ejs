@@ -1,0 +1,88 @@
+<!DOCTYPE html>  
+<html lang="fr">  
+<head>  
+    <meta charset="UTF-8">  
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">  
+    <link rel="stylesheet" href="styles.css">  
+    <title>Suivi des Candidatures</title>  
+</head>
+<link rel="stylesheet" href="style.css">  
+<body>  
+    <h1>Suivi des Candidatures</h1>  
+
+    <h2>Soumettre une nouvelle candidature</h2>  
+    <form action="/submit" method="POST">  
+        <label for="name">Nom du Candidat :</label>  <br><br>
+        <input type="text" id="name" name="name" required>  
+        
+        <label for="program">Programme :</label>  <br><br>
+        <input type="text" id="program" name="program" required>  
+<br><br>
+        <button type="submit">Soumettre</button>  
+    </form>  
+
+    <h2>Liste des Candidatures</h2>  
+    <table>  
+        <tr>  
+            <th>Nom</th>  
+            <th>Programme</th>  
+            <th>Statut</th>  
+            <th>Actions</th>  
+        </tr>  
+        <% applications.forEach((app, index) => { %>  
+        <tr>  
+            <td><%= app.name %></td>  
+            <td><%= app.program %></td>  
+            <td><%= app.status %></td>  
+            <td>  
+                <form action="/update-status/<%= index %>" method="POST">  
+                    <select name="status">  
+                        <option value="Accepté">Accepter</option>  
+                        <option value="Rejeté">Rejeter</option>  
+                    </select>  
+                    <input type="text" name="message" placeholder="Message personnalisé" required />  
+                    <button type="submit">Mettre à jour</button>  
+                </form>  
+                <p><%= app.message %></p>  
+            </td>  
+        </tr>  
+        <% }) %>  
+    </table>  
+</body>  
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
